@@ -17,7 +17,7 @@ const createApp = () => {
   // compression middleware
   app.use(compression())
 
-  // paths to '/' for getting, posting, putting here
+  // api routers, etc. here
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
