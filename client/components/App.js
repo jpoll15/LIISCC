@@ -8,7 +8,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       photos: [],
-      currentPhoto: {}
+      currentPhoto: {},
+      showModal: false
     }
   }
 
@@ -43,11 +44,11 @@ class App extends React.Component {
   }
 
   selectPhoto = photo => {
-    this.setState({currentPhoto: photo})
+    this.setState({currentPhoto: photo, showModal: true})
   }
 
   deselectPhoto = () => {
-    this.setState({currentPhoto: {}})
+    this.setState({currentPhoto: {}, showModal: false})
   }
 
   addDescription = event => {
@@ -69,13 +70,15 @@ class App extends React.Component {
   }
 
   render() {
+    // key={this.state.currentPhoto.id}
+
     return (
       <div id='photogrid'>
         {this.state.photos.length && this.state.photos.map(photo => {
           return <PhotoBox key={photo.id} photo={photo} selectPhoto={this.selectPhoto} className='thumb'/>
         })}
-        <Modal photo={this.state.currentPhoto}
-          deselectPhoto={this.deselectPhoto} addDescription={this.addDescription} key={this.state.currentPhoto.id || 'empty'} />
+        {this.state.showModal && <Modal photo={this.state.currentPhoto}
+          deselectPhoto={this.deselectPhoto} addDescription={this.addDescription}  />}
       </div>
     )
   }

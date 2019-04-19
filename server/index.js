@@ -66,5 +66,3 @@ if (require.main === module) {
 } else {
   createApp()
 }
-
-//    "test": "echo \"Error: no test specified\" && exit 1",

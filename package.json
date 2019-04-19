@@ -12,7 +12,7 @@
     "start": "npm run build-client & npm run start-server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
-    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register"
+    "test": "NODE_ENV='test' mocha ./tests --recursive --watch --require @babel/polyfill --require @babel/register"
   },
   "keywords": [],
   "author": "",
@@ -39,10 +39,19 @@
     "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "axios-mock-adapter": "^1.16.0",
     "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
     "css-loader": "^2.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jsdom": "^14.0.0",
+    "mocha": "^6.1.2",
+    "mock-local-storage": "^1.1.8",
     "nodemon": "^1.18.11",
     "style-loader": "^0.23.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
