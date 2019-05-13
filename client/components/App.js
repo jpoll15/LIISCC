@@ -56,29 +56,26 @@ class App extends React.Component {
 
     const photos = this.state.photos.map(photo => {
       if (photo.id === this.state.currentPhoto.id) {
-
         photo.description = event.target.description.value
-
       }
       return photo
     })
     this.setState({
       photos,
-      currentPhoto: {}
+      currentPhoto: {},
+      showModal: false
     })
 
   }
 
   render() {
-    // key={this.state.currentPhoto.id}
-
     return (
       <div id='photogrid'>
         {this.state.photos.length && this.state.photos.map(photo => {
           return <PhotoBox key={photo.id} photo={photo} selectPhoto={this.selectPhoto} className='thumb'/>
         })}
         {this.state.showModal && <Modal photo={this.state.currentPhoto}
-          deselectPhoto={this.deselectPhoto} addDescription={this.addDescription}  />}
+          deselectPhoto={this.deselectPhoto} addDescription={this.addDescription} />}
       </div>
     )
   }
