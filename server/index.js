@@ -17,10 +17,12 @@ const createApp = () => {
   // compression middleware
   app.use(compression())
 
-  // api routers, etc. here
-
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
@@ -66,5 +68,3 @@ if (require.main === module) {
 } else {
   createApp()
 }
-
-//    "test": "echo \"Error: no test specified\" && exit 1",
